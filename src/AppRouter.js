@@ -1,19 +1,19 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import { Home } from "pages";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Home, Favorites } from "pages";
 import { ThemeProvider } from "theme";
 import NavBar from "components/NavBar";
 
 const AppRouter = () => {
   return (
     <ThemeProvider>
-      <Router>
+      <BrowserRouter>
         <NavBar />
         <Switch>
-          <Route exact path="/" component={Home} />
-          {/* TODO add route for favorites */}
+          <Route path="/favorites" component={Favorites} />
+          <Route path="/" component={Home} />
         </Switch>
-      </Router>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };

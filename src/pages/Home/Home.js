@@ -3,7 +3,7 @@ import Text from "components/Text";
 import UserList from "components/UserList";
 import { usePeopleFetch } from "hooks";
 import Spinner from "components/Spinner";
-import * as S from "./style";
+import * as S from "../style";
 
 const Home = () => {
   const { users, isLoading } = usePeopleFetch();

@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import { useHistory } from "react-router-dom";
 
 const NavBar = () => {
   const [value, setValue] = useState(0);
 
+  const history = useHistory();
   const handleChange = (_e, newValue) => {
+    if (newValue === 0) history.push("/");
+    if (newValue === 1) history.push("/favorites");
     setValue(newValue);
   };
 
-  // TODO change route on tab select
   return (
     <AppBar position="static" color="transparent" style={{ position: "fixed", top: 0 }}>
       <Tabs

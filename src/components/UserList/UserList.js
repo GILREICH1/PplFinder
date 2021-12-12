@@ -64,7 +64,7 @@ const UserList = ({ users }) => {
             />
           ))
         ) : (
-          <Text>No users found for the above filters</Text>
+          <Text>No users to display</Text>
         )}
       </S.List>
     </S.UserList>

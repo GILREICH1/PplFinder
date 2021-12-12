@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CheckBox from "components/CheckBox";
 import * as S from "./style";
 import { User } from "./User";
+import Text from "components/Text";
 import { COUNTRY_FILTERS } from "constant";
 
 const UserList = ({ users }) => {
@@ -21,8 +22,15 @@ const UserList = ({ users }) => {
   }
 
   useEffect(() => {
-    console.log(filters);
+    if (filters.length === 0) {
+      setFilteredUsers(users);
+    } else {
+      setFilteredUsers(() =>
+        users.filter((user) => filters.includes(user.location.country))
+      );
+    }
   }, [filters]);
+
   return (
     <S.UserList>
       <S.Filters>
@@ -36,9 +44,13 @@ const UserList = ({ users }) => {
         ))}
       </S.Filters>
       <S.List>
-        {filteredUsers.map((user) => (
-          <User key={`${user.id.value}_${user.name.first}`} user={user} />
-        ))}
+        {filteredUsers.length > 0 ? (
+          filteredUsers.map((user) => (
+            <User key={`${user.id.value}_${user.name.first}`} user={user} />
+          ))
+        ) : (
+          <Text>No users found for the above filters</Text>
+        )}
       </S.List>
     </S.UserList>
   );

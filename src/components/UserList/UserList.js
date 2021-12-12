@@ -46,6 +46,7 @@ const UserList = ({ users, isLoading }) => {
                   {user?.location.city} {user?.location.country}
                 </Text>
               </S.UserInfo>
+              {/* TODO isVisible if favorite  */}
               <S.IconButtonWrapper isVisible={index === hoveredUserId}>
                 <IconButton>
                   <FavoriteIcon color="error" />
@@ -62,6 +63,12 @@ const UserList = ({ users, isLoading }) => {
       </S.List>
     </S.UserList>
   );
+};
+
+// TODO
+const User = ({ isFavorite, user }) => {
+  // function favorite()
+  // function unfavorite()
 };
 
 export default UserList;

@@ -11,6 +11,7 @@ const AppRouter = () => {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
+          {/* TODO add route for favorites */}
         </Switch>
       </Router>
     </ThemeProvider>

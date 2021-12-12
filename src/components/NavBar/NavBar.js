@@ -10,6 +10,7 @@ const NavBar = () => {
     setValue(newValue);
   };
 
+  // TODO change route on tab select
   return (
     <AppBar position="static" color="transparent" style={{ position: "fixed", top: 0 }}>
       <Tabs

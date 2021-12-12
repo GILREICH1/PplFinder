@@ -19,4 +19,4 @@ export const COLORS = {
   secondary: "secondary",
 };
 
-export const COUNTRY_FILTERS = ["Brazil", "Germany", "Australia", "Canada"];
+export const COUNTRY_FILTERS = ["Brazil", "Germany", "Australia", "Canada", "Iran"];

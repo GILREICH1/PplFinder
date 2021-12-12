@@ -9,6 +9,7 @@ const UserList = ({ users }) => {
   const [filters, setFilters] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState(users);
   const [favorites, setFavorites] = useState([]);
+
   useEffect(() => {
     const localFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setFavorites(localFavorites);
@@ -54,7 +55,9 @@ const UserList = ({ users }) => {
             <User
               setFavorites={setFavorites}
               favorites={favorites}
-              // isFavorite={favorites.find()}
+              isFavorite={
+                favorites.filter((fav) => fav.login.uuid === user.login.uuid).length > 0
+              }
               key={`${user.name.first}_${user.name.last}`}
               user={user}
             />

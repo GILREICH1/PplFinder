@@ -40,8 +40,7 @@ export const User = ({ setFavorites, isFavorite, user, favorites }) => {
           {user.location.city} {user.location.country}
         </Text>
       </S.UserInfo>
-      {/* TODO isVisible if favorite  */}
-      <S.IconButtonWrapper isVisible={isHovering}>
+      <S.IconButtonWrapper isVisible={isFavorite || isHovering}>
         <IconButton onClick={isFavorite ? removeFromFavorites : addToFavorites}>
           <FavoriteIcon color="error" />
         </IconButton>

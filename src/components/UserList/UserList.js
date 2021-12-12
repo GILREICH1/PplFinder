@@ -9,6 +9,7 @@ const UserList = ({ users }) => {
   const [filters, setFilters] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState(users);
   const [favorites, setFavorites] = useState([]);
+  console.log(favorites);
 
   useEffect(() => {
     const localFavorites = JSON.parse(localStorage.getItem("favorites")) || [];

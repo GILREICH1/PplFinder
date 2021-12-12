@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import Spinner from "components/Spinner";
+import { useEffect, useState } from "react";
 import CheckBox from "components/CheckBox";
 import * as S from "./style";
 import { User } from "./User";
@@ -14,15 +13,9 @@ const UserList = ({ users, isLoading }) => {
         ))}
       </S.Filters>
       <S.List>
-        {isLoading ? (
-          <S.SpinnerWrapper>
-            <Spinner color="primary" size="45px" thickness={6} variant="indeterminate" />
-          </S.SpinnerWrapper>
-        ) : (
-          users.map((user) => {
-            return <User key={`${user.id.value}_${user.name.first}`} user={user} />;
-          })
-        )}
+        {filteredUsers.map((user) => (
+          <User key={`${user.id.value}_${user.name.first}`} user={user} />
+        ))}
       </S.List>
     </S.UserList>
   );

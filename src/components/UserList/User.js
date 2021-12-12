@@ -4,10 +4,18 @@ import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import * as S from "./style";
 
-export const User = ({ isFavorite, user }) => {
-  // TODO
-  // function favorite()
-  // function unfavorite()
+export const User = ({ setFavorites, isFavorite, user, favorites }) => {
+  function addToFavorites() {
+    favorites.push(user);
+    setFavorites(favorites);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }
+  function removeFromFavorites() {
+    favorites.filter((fav) => fav.login.uuid !== user.login.uuid);
+    setFavorites(favorites);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }
+
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseEnter = () => {
@@ -34,7 +42,7 @@ export const User = ({ isFavorite, user }) => {
       </S.UserInfo>
       {/* TODO isVisible if favorite  */}
       <S.IconButtonWrapper isVisible={isHovering}>
-        <IconButton>
+        <IconButton onClick={isFavorite ? removeFromFavorites : addToFavorites}>
           <FavoriteIcon color="error" />
         </IconButton>
       </S.IconButtonWrapper>

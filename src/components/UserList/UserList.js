@@ -8,6 +8,11 @@ import { COUNTRY_FILTERS } from "constant";
 const UserList = ({ users }) => {
   const [filters, setFilters] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState(users);
+  const [favorites, setFavorites] = useState([]);
+  useEffect(() => {
+    const localFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFavorites(localFavorites);
+  }, []);
 
   useEffect(() => {
     setFilteredUsers(users);
@@ -46,7 +51,13 @@ const UserList = ({ users }) => {
       <S.List>
         {filteredUsers.length > 0 ? (
           filteredUsers.map((user) => (
-            <User key={`${user.id.value}_${user.name.first}`} user={user} />
+            <User
+              setFavorites={setFavorites}
+              favorites={favorites}
+              // isFavorite={favorites.find()}
+              key={`${user.name.first}_${user.name.last}`}
+              user={user}
+            />
           ))
         ) : (
           <Text>No users found for the above filters</Text>

@@ -4,12 +4,33 @@ import * as S from "./style";
 import { User } from "./User";
 import { COUNTRY_FILTERS } from "constant";
 
-const UserList = ({ users, isLoading }) => {
+const UserList = ({ users }) => {
+  const [filters, setFilters] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState(users);
+
+  useEffect(() => {
+    setFilteredUsers(users);
+  }, []);
+
+  function toggleFilter({ checked, value }) {
+    if (checked) {
+      console.log("remove", value);
+    } else {
+      console.log("add", value);
+    }
+  }
+
+  useEffect(() => {}, [filters]);
   return (
     <S.UserList>
       <S.Filters>
         {COUNTRY_FILTERS.map((country) => (
-          <CheckBox key={country} label={country} />
+          <CheckBox
+            onChange={toggleFilter}
+            value={country}
+            key={country}
+            label={country}
+          />
         ))}
       </S.Filters>
       <S.List>

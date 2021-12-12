@@ -14,13 +14,15 @@ const UserList = ({ users }) => {
 
   function toggleFilter({ checked, value }) {
     if (checked) {
-      console.log("remove", value);
+      setFilters((prev) => prev.filter((e) => e !== value));
     } else {
-      console.log("add", value);
+      setFilters((prev) => [...prev, value]);
     }
   }
 
-  useEffect(() => {}, [filters]);
+  useEffect(() => {
+    console.log(filters);
+  }, [filters]);
   return (
     <S.UserList>
       <S.Filters>

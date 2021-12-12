@@ -3,15 +3,15 @@ import Spinner from "components/Spinner";
 import CheckBox from "components/CheckBox";
 import * as S from "./style";
 import { User } from "./User";
+import { COUNTRY_FILTERS } from "constant";
 
 const UserList = ({ users, isLoading }) => {
   return (
     <S.UserList>
       <S.Filters>
-        <CheckBox value="BR" label="Brazil" />
-        <CheckBox value="AU" label="Australia" />
-        <CheckBox value="CA" label="Canada" />
-        <CheckBox value="DE" label="Germany" />
+        {COUNTRY_FILTERS.map((country) => (
+          <CheckBox key={country} label={country} />
+        ))}
       </S.Filters>
       <S.List>
         {isLoading ? (

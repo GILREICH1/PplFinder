@@ -7,10 +7,12 @@ const Favorites = () => {
   const [favorites, setFavorites] = React.useState([]);
 
   React.useEffect(() => {
-    const localFavorites = localStorage.getItem("favorites") || [];
-    setFavorites(JSON.parse(localFavorites));
+    const localFavoritesString = localStorage.getItem("favorites") || [];
+    const localFavorites = JSON.parse(localFavoritesString);
+    setFavorites(localFavorites);
   }, []);
 
+  console.log("favorites", favorites);
   return (
     <S.Home>
       <S.Content>
@@ -19,7 +21,11 @@ const Favorites = () => {
             Favorites
           </Text>
         </S.Header>
-        <UserList users={favorites} />
+        {favorites.length === 0 ? (
+          <h2>You have no favorites saved!</h2>
+        ) : (
+          <UserList key="favoritesUserList" users={favorites} />
+        )}
       </S.Content>
     </S.Home>
   );

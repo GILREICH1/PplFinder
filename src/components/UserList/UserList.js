@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import CheckBox from "components/CheckBox";
 import * as S from "./style";
 import { User } from "./User";
@@ -6,29 +6,31 @@ import Text from "components/Text";
 import { COUNTRY_FILTERS } from "constant";
 
 const UserList = ({ users }) => {
-  const [filters, setFilters] = useState([]);
-  const [filteredUsers, setFilteredUsers] = useState(users);
-  const [favorites, setFavorites] = useState([]);
-  console.log(favorites);
+  const [favorites, setFavorites] = React.useState([]);
+  const [filters, setFilters] = React.useState([]);
+  const [filteredUsers, setFilteredUsers] = React.useState([]);
 
-  useEffect(() => {
-    const localFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    setFavorites(localFavorites);
+  const toggleFilter = React.useCallback(
+    ({ checked, value }) => {
+      if (checked) {
+        setFilters((prev) => prev.filter((e) => e !== value));
+      } else {
+        setFilters((prev) => [...prev, value]);
+      }
+    },
+    [setFilters, filters]
+  );
+
+  React.useEffect(() => {
+    const localFavorites = localStorage.getItem("favorites") || [];
+    setFavorites(JSON.parse(localFavorites));
   }, []);
 
-  useEffect(() => {
-    setFilteredUsers(users);
+  React.useEffect(() => {
+    if (filteredUsers.length === 0) setFilteredUsers(users);
   }, []);
 
-  function toggleFilter({ checked, value }) {
-    if (checked) {
-      setFilters((prev) => prev.filter((e) => e !== value));
-    } else {
-      setFilters((prev) => [...prev, value]);
-    }
-  }
-
-  useEffect(() => {
+  React.useEffect(() => {
     if (filters.length === 0) {
       setFilteredUsers(users);
     } else {

@@ -4,7 +4,12 @@ import UserList from "components/UserList";
 import * as S from "../style";
 
 const Favorites = () => {
-  const favorites = JSON.parse(localStorage.getItem("favorites")) | [];
+  const [favorites, setFavorites] = React.useState([]);
+
+  React.useEffect(() => {
+    const localFavorites = localStorage.getItem("favorites") || [];
+    setFavorites(JSON.parse(localFavorites));
+  }, []);
 
   return (
     <S.Home>

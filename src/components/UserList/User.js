@@ -10,10 +10,12 @@ export const User = ({ setFavorites, isFavorite, user, favorites }) => {
     setFavorites(favorites);
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }
+
   function removeFromFavorites() {
-    favorites.filter((fav) => fav.login.uuid !== user.login.uuid);
-    setFavorites(favorites);
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    console.log("removing");
+    const newfavorites = favorites.filter((fav) => fav.login.uuid !== user.login.uuid);
+    setFavorites(newfavorites);
+    localStorage.setItem("favorites", JSON.stringify(newfavorites));
   }
 
   const [isHovering, setIsHovering] = useState(false);

@@ -2,16 +2,12 @@ import React from "react";
 import Text from "components/Text";
 import UserList from "components/UserList";
 import * as S from "../style";
+import { favoritesContext } from "AppRouter";
 
 const Favorites = () => {
-  const [favorites, setFavorites] = React.useState([]);
+  const { favorites } = React.useContext(favoritesContext);
 
-  React.useEffect(() => {
-    const localFavoritesString = localStorage.getItem("favorites") || [];
-    const localFavorites = JSON.parse(localFavoritesString);
-    setFavorites(localFavorites);
-  }, []);
-
+  console.log(favorites);
   return (
     <S.Home>
       <S.Content>

@@ -4,9 +4,11 @@ import * as S from "./style";
 import { User } from "./User";
 import Text from "components/Text";
 import { COUNTRY_FILTERS } from "constant";
+import { favoritesContext } from "AppRouter";
 
 const UserList = ({ users }) => {
-  const [favorites, setFavorites] = React.useState([]);
+  const { favorites, setFavorites } = React.useContext(favoritesContext);
+
   const [filters, setFilters] = React.useState([]);
   const [filteredUsers, setFilteredUsers] = React.useState([]);
 
@@ -22,8 +24,6 @@ const UserList = ({ users }) => {
   );
 
   React.useEffect(() => {
-    const localFavorites = localStorage.getItem("favorites") || [];
-    setFavorites(JSON.parse(localFavorites));
     setFilteredUsers(users);
   }, []);
 

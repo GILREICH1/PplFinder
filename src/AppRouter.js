@@ -21,8 +21,9 @@ const AppRouter = () => {
   }
 
   React.useEffect(() => {
-    const localFavorites = localStorage.getItem("favorites") || [];
-    setFavorites(JSON.parse(localFavorites));
+    const localFavorites = localStorage.getItem("favorites");
+    const initialFavorites = localFavorites ? JSON.parse(localFavorites) : [];
+    setFavorites(initialFavorites);
   }, []);
 
   return (

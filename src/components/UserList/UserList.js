@@ -53,8 +53,6 @@ const UserList = ({ users }) => {
         {filteredUsers.length > 0 ? (
           filteredUsers.map((user) => (
             <User
-              setFavorites={setFavorites}
-              favorites={favorites}
               isFavorite={
                 favorites.filter((fav) => fav.login.uuid === user.login.uuid).length > 0
               }

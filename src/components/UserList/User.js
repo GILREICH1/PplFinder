@@ -3,20 +3,10 @@ import Text from "components/Text";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import * as S from "./style";
+import { favoritesContext } from "AppRouter";
 
-export const User = ({ setFavorites, isFavorite, user, favorites }) => {
-  function addToFavorites() {
-    favorites.push(user);
-    setFavorites(favorites);
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }
-
-  function removeFromFavorites() {
-    console.log("removing");
-    const newfavorites = favorites.filter((fav) => fav.login.uuid !== user.login.uuid);
-    setFavorites(newfavorites);
-    localStorage.setItem("favorites", JSON.stringify(newfavorites));
-  }
+export const User = ({ isFavorite, user }) => {
+  const { addToFavorites, removeFromFavorites } = React.useContext(favoritesContext);
 
   const [isHovering, setIsHovering] = useState(false);
 
@@ -43,7 +33,11 @@ export const User = ({ setFavorites, isFavorite, user, favorites }) => {
         </Text>
       </S.UserInfo>
       <S.IconButtonWrapper isVisible={isFavorite || isHovering}>
-        <IconButton onClick={isFavorite ? removeFromFavorites : addToFavorites}>
+        <IconButton
+          onClick={
+            isFavorite ? () => removeFromFavorites(user) : () => addToFavorites(user)
+          }
+        >
           <FavoriteIcon color="error" />
         </IconButton>
       </S.IconButtonWrapper>

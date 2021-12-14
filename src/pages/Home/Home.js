@@ -6,6 +6,7 @@ import Spinner from "components/Spinner";
 import * as S from "../style";
 
 const Home = () => {
+  // TODO move to up and into context for state management
   const { users, isLoading } = usePeopleFetch();
 
   return (

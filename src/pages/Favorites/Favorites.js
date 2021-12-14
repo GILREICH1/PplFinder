@@ -12,7 +12,6 @@ const Favorites = () => {
     setFavorites(localFavorites);
   }, []);
 
-  console.log("favorites", favorites);
   return (
     <S.Home>
       <S.Content>

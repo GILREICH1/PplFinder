@@ -24,7 +24,6 @@ const UserList = ({ users }) => {
   React.useEffect(() => {
     const localFavorites = localStorage.getItem("favorites") || [];
     setFavorites(JSON.parse(localFavorites));
-    console.log({ filteredUsers, users });
     setFilteredUsers(users);
   }, []);
 

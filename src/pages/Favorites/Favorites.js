@@ -19,7 +19,7 @@ const Favorites = () => {
         {favorites.length === 0 ? (
           <h2>You have no favorites saved!</h2>
         ) : (
-          <UserList key="favoritesUserList" users={favorites} />
+          <UserList key={`favoritesUserList_${favorites.length}`} users={favorites} />
         )}
       </S.Content>
     </S.Home>

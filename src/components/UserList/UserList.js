@@ -7,7 +7,7 @@ import { COUNTRY_FILTERS } from "constant";
 import { favoritesContext } from "AppRouter";
 
 const UserList = ({ users }) => {
-  const { favorites, setFavorites } = React.useContext(favoritesContext);
+  const { favorites } = React.useContext(favoritesContext);
 
   const [filters, setFilters] = React.useState([]);
   const [filteredUsers, setFilteredUsers] = React.useState([]);
@@ -26,6 +26,7 @@ const UserList = ({ users }) => {
   React.useEffect(() => {
     setFilteredUsers(users);
   }, []);
+  console.log(users);
 
   React.useEffect(() => {
     if (filters.length === 0) {

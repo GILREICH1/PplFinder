@@ -20,4 +20,4 @@ const CheckBox = ({ onChange, label, value }) => {
   );
 };
 
-export default CheckBox;
+export default React.memo(CheckBox);

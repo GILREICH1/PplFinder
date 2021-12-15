@@ -5,7 +5,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import * as S from "./style";
 import { favoritesContext } from "AppRouter";
 
-export const User = ({ isFavorite, user }) => {
+const User = ({ isFavorite, user }) => {
   const { addToFavorites, removeFromFavorites } = React.useContext(favoritesContext);
 
   const [isHovering, setIsHovering] = useState(false);
@@ -44,3 +44,5 @@ export const User = ({ isFavorite, user }) => {
     </S.User>
   );
 };
+
+export default React.memo(User);

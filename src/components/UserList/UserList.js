@@ -1,7 +1,7 @@
 import React from "react";
 import CheckBox from "components/CheckBox";
 import * as S from "./style";
-import { User } from "./User";
+import User from "./User";
 import Text from "components/Text";
 import { COUNTRY_FILTERS } from "constant";
 import { favoritesContext } from "AppRouter";

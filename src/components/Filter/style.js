@@ -19,4 +19,7 @@ export const ShowAllButton = styled.button`
   padding: 0.25em 1em;
   border: 2px solid "#303030";
   border-radius: 3px;
+  &:disabled {
+    opacity: 60%;
+  }
 `;

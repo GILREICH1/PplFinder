@@ -2,6 +2,8 @@ import React from "react";
 import CheckBox from "components/CheckBox";
 import * as S from "./style";
 
+const shortFilterDisplay = 6;
+
 const Filter = ({ setFilteredUsers, users }) => {
   const [filterOptions, setFilterOptions] = React.useState([]);
   const [activeFilters, setActiveFilters] = React.useState([]);
@@ -10,9 +12,9 @@ const Filter = ({ setFilteredUsers, users }) => {
   React.useEffect(() => {
     const countries = users
       .map((user) => user.location.country)
-      .filter((v, i, a) => a.indexOf(v) === i);
+      .filter((country, i, a) => a.indexOf(country) === i);
     if (showAll) setFilterOptions(countries);
-    else setFilterOptions(countries.slice(0, 5));
+    else setFilterOptions(countries.slice(0, shortFilterDisplay + 1));
   }, [showAll]);
 
   const toggleFilter = ({ checked, value }) => {
@@ -45,11 +47,15 @@ const Filter = ({ setFilteredUsers, users }) => {
           />
         ))}
       </S.Filters>
-      <S.ShowAllButton showAll={showAll} onClick={() => setShowAll(!showAll)}>
+      <S.ShowAllButton
+        disabled={filterOptions.length <= shortFilterDisplay}
+        showAll={showAll}
+        onClick={() => setShowAll(!showAll)}
+      >
         {showAll ? "Show less" : "Show All Filters"}
       </S.ShowAllButton>
     </>
   );
 };
 
-export default Filter;
+export default React.memo(Filter);

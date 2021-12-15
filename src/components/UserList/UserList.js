@@ -15,24 +15,26 @@ const UserList = ({ users }) => {
   }, []);
 
   return (
-    <S.UserList>
+    <>
       <Filter setFilteredUsers={setFilteredUsers} users={users} />
-      <S.List>
-        {filteredUsers.length > 0 ? (
-          filteredUsers.map((user) => (
-            <User
-              isFavorite={
-                favorites.filter((fav) => fav.login.uuid === user.login.uuid).length > 0
-              }
-              key={`${user.name.first}_${user.name.last}`}
-              user={user}
-            />
-          ))
-        ) : (
-          <Text>No users to display</Text>
-        )}
-      </S.List>
-    </S.UserList>
+      <S.UserList>
+        <S.List>
+          {filteredUsers.length > 0 ? (
+            filteredUsers.map((user) => (
+              <User
+                isFavorite={
+                  favorites.filter((fav) => fav.login.uuid === user.login.uuid).length > 0
+                }
+                key={`${user.name.first}_${user.name.last}`}
+                user={user}
+              />
+            ))
+          ) : (
+            <Text>No users to display</Text>
+          )}
+        </S.List>
+      </S.UserList>
+    </>
   );
 };
 

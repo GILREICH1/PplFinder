@@ -34,14 +34,21 @@ const Filter = ({ setFilteredUsers, users }) => {
   }, [activeFilters]);
 
   return (
-    <S.Filters>
-      {filterOptions.map((country) => (
-        <CheckBox onChange={toggleFilter} value={country} key={country} label={country} />
-      ))}
+    <>
+      <S.Filters>
+        {filterOptions.map((country) => (
+          <CheckBox
+            onChange={toggleFilter}
+            value={country}
+            key={country}
+            label={country}
+          />
+        ))}
+      </S.Filters>
       <S.ShowAllButton showAll={showAll} onClick={() => setShowAll(!showAll)}>
         {showAll ? "Show less" : "Show All"}
       </S.ShowAllButton>
-    </S.Filters>
+    </>
   );
 };
 

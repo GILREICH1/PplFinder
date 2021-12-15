@@ -46,7 +46,7 @@ const Filter = ({ setFilteredUsers, users }) => {
         ))}
       </S.Filters>
       <S.ShowAllButton showAll={showAll} onClick={() => setShowAll(!showAll)}>
-        {showAll ? "Show less" : "Show All"}
+        {showAll ? "Show less" : "Show All Filters"}
       </S.ShowAllButton>
     </>
   );

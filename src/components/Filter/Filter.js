@@ -38,7 +38,7 @@ const Filter = ({ setFilteredUsers, users }) => {
       {filterOptions.map((country) => (
         <CheckBox onChange={toggleFilter} value={country} key={country} label={country} />
       ))}
-      <S.ShowAllButton onClick={() => setShowAll(!showAll)}>
+      <S.ShowAllButton showAll={showAll} onClick={() => setShowAll(!showAll)}>
         {showAll ? "Show less" : "Show All"}
       </S.ShowAllButton>
     </S.Filters>

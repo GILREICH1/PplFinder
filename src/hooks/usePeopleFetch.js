@@ -4,14 +4,13 @@ import axios from "axios";
 // TODO add error catching
 export const usePeopleFetch = () => {
   const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchUsers();
   }, []);
 
   async function fetchUsers() {
-    setIsLoading(true);
     const response = await axios.get(`https://randomuser.me/api/?results=25&page=1`);
     setUsers(response.data.results);
     setIsLoading(false);

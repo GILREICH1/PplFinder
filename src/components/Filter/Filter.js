@@ -1,10 +1,19 @@
 import React from "react";
-import { COUNTRY_FILTERS } from "constant";
 import CheckBox from "components/CheckBox";
 import * as S from "./style";
 
 const Filter = ({ setFilteredUsers, users }) => {
+  const [filterOptions, setFilterOptions] = React.useState([]);
   const [activeFilters, setActiveFilters] = React.useState([]);
+  const [showAll, setShowAll] = React.useState(false);
+
+  React.useEffect(() => {
+    const countries = users
+      .map((user) => user.location.country)
+      .filter((v, i, a) => a.indexOf(v) === i);
+    if (showAll) setFilterOptions(countries);
+    else setFilterOptions(countries.slice(0, 5));
+  }, [showAll]);
 
   const toggleFilter = ({ checked, value }) => {
     if (checked) {
@@ -26,9 +35,12 @@ const Filter = ({ setFilteredUsers, users }) => {
 
   return (
     <S.Filters>
-      {COUNTRY_FILTERS.map((country) => (
+      {filterOptions.map((country) => (
         <CheckBox onChange={toggleFilter} value={country} key={country} label={country} />
       ))}
+      <S.ShowAllButton onClick={() => setShowAll(!showAll)}>
+        {showAll ? "Show less" : "Show All"}
+      </S.ShowAllButton>
     </S.Filters>
   );
 };

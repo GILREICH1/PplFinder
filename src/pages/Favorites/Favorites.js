@@ -7,7 +7,6 @@ import { favoritesContext } from "AppRouter";
 const Favorites = () => {
   const { favorites } = React.useContext(favoritesContext);
 
-  console.log(favorites);
   return (
     <S.Home>
       <S.Content>

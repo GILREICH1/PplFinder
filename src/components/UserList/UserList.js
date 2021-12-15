@@ -26,7 +26,6 @@ const UserList = ({ users }) => {
   React.useEffect(() => {
     setFilteredUsers(users);
   }, []);
-  console.log(users);
 
   React.useEffect(() => {
     if (filters.length === 0) {

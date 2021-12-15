@@ -35,7 +35,7 @@ const AppRouter = () => {
           <NavBar />
           <Switch>
             <Route exact path="/favorites" component={Favorites} />
-            <Route exact path="/" component={Home} />
+            <Route path="/" component={Home} />
           </Switch>
         </favoritesContext.Provider>
       </BrowserRouter>
